@@ -7,13 +7,6 @@ import numpy as np
 import glob
 import os
 
-# Parse HTML
-
-url = "https://www.nfl.com/stats/player-stats/category/passing/2023/post/all/passingyards/desc"
-headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"}
-page = get(url, headers=headers)
-soup = bs(page.content, 'html.parser')
-
 # Create CSV files from data tables of player stats
 
 csv_files = []
@@ -48,11 +41,11 @@ def getStats(url):
 # Creating CSVs for all player stat categories
 
 categories = soup.find_all('li', class_='d3-o-tabs__list-item')
-'''
+
 for category in categories:
     link = f"{"https://www.nfl.com"}{category.find('a', href=True)['href']}"
     getStats(link)
-'''
+
 # Merging CSV files into one Excel Workbook with multiple sheets
 
 directory = 'C:/Users/jacob/OneDrive/Desktop/Projects/NFL Web Scraping Project'
